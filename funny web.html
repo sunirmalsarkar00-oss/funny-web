@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Useless Website 😂</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  width: 92%;
+  max-width: 600px;
+  text-align: center;
+  background: rgba(255,255,255,0.9);
+  padding: 35px 25px;
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+h1 {
+  font-size: 42px;
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.counter {
+  font-size: 20px;
+  margin: 20px;
+}
+
+button {
+  border: none;
+  padding: 14px 22px;
+  margin: 8px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  background: #111;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+#message {
+  min-height: 60px;
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#runaway {
+  position: relative;
+}
+
+.emoji {
+  position: fixed;
+  font-size: 35px;
+  animation: fall 2s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+#achievement {
+  margin-top: 20px;
+  color: #777;
+  font-size: 14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>😂 The Useless Website</h1>
+
+  <div class="subtitle">
+    Congratulations! You found a website that does absolutely nothing useful.
+  </div>
+
+  <div id="message">
+    Press a button. I dare you. 😏
+  </div>
+
+<button onclick="uselessButton()">Do Something Useful 🧠</button>
+
+<button onclick="moneyButton()">Make Me Rich 💰</button>
+
+<button onclick="party()">Party Mode 🎉</button>
+
+  <br>
+
+<button id="runaway"
+       onmouseover="runAway()"
+       onclick="runAway()">
+Click Me 😈 </button>
+
+  <div class="counter">
+    Useless clicks: <strong id="count">0</strong>
+  </div>
+
+  <div id="achievement">
+    🏆 Achievement: You haven't achieved anything yet.
+  </div>
+
+</div>
+
+<script>
+
+let clicks = 0;
+
+const messages = [
+  "Congratulations! You did absolutely nothing. 🎉",
+  "Your productivity has decreased by 7%. 📉",
+  "Scientists are confused by your decision. 🧪",
+  "Please wait... still useless. 😂",
+  "Error 404: Motivation not found.",
+  "Your computer is judging you. 👀",
+  "Excellent! You wasted another second. ⏰",
+  "Breaking news: You clicked a button.",
+  "Your boss has been notified. 😈",
+  "This website has officially become your problem."
+];
+
+function uselessButton() {
+  clicks++;
+
+  document.getElementById("count").innerText = clicks;
+
+  let random =
+    messages[Math.floor(Math.random() * messages.length)];
+
+  document.getElementById("message").innerText = random;
+
+  if (clicks === 5) {
+    document.getElementById("achievement").innerText =
+      "🏆 Achievement unlocked: Professional Time Waster!";
+  }
+
+  if (clicks === 10) {
+    document.getElementById("achievement").innerText =
+      "🏆 Legendary achievement: You REALLY have nothing to do.";
+  }
+}
+
+function moneyButton() {
+  document.getElementById("message").innerText =
+    "💰 Calculating your wealth...";
+
+  setTimeout(() => {
+    document.getElementById("message").innerText =
+      "Your new balance: ₹0.00 😂";
+  }, 1500);
+}
+
+function party() {
+
+  document.getElementById("message").innerText =
+    "🎉 PARTY MODE ACTIVATED!!! 🎉";
+
+  for (let i = 0; i < 35; i++) {
+
+    const emoji = document.createElement("div");
+
+    emoji.className = "emoji";
+
+    const emojis = ["😂","🎉","🔥","💀","🤣","🕺","💃","🍕"];
+
+    emoji.innerText =
+      emojis[Math.floor(Math.random() * emojis.length)];
+
+    emoji.style.left = Math.random() * 100 + "vw";
+
+    emoji.style.animationDuration =
+      (1 + Math.random() * 2) + "s";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(() => emoji.remove(), 3000);
+  }
+}
+
+function runAway() {
+
+  const button = document.getElementById("runaway");
+
+  const x = Math.random() * 250 - 125;
+  const y = Math.random() * 150 - 75;
+
+  button.style.transform =
+    `translate(${x}px, ${y}px)`;
+
+  document.getElementById("message").innerText =
+    "HAHA! You can't catch me! 😈";
+}
+
+</script>
+
+</body>
+</html>
